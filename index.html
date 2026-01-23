@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Executive Portfolio - Dark Theme</title>
+
+  <style>
+    :root {
+      /* Dark Corporate Color System */
+      --color-bg: #0f1a2b;           /* Dark Navy */
+      --color-bg-soft: #152236;      /* Slightly lighter section bg */
+      --color-text: #e0e4e8;         /* Light gray text */
+      --color-primary: #5b9bd5;      /* Muted corporate blue */
+      --color-secondary: #a0aec0;    /* Secondary text */
+      --color-accent: #3daee9;       /* Accent for highlights / borders */
+      --color-link-hover: #7ec8ff;   /* Hover color for links */
+      --max-width: 1100px;
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    img { max-width:100%; display:block; border-radius:4px; }
+    a { color: var(--color-primary); text-decoration:none; transition: color 0.3s ease; }
+    a:hover { color: var(--color-link-hover); text-decoration: underline; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 4rem 2rem; }
+    section { padding:5rem 0; }
+    section:nth-of-type(even) { background-color: var(--color-bg-soft); }
+
+    /* Hero Header */
+    .hero { display:grid; grid-template-columns:1fr 300px; gap:4rem; align-items:center; }
+    .hero h1 { font-size:2.6rem; font-weight:600; color:var(--color-primary); opacity:0; transform:translateY(-20px); transition: all 700ms ease; }
+    .hero h2 { font-size:1.25rem; font-weight:400; color:var(--color-secondary); opacity:0; transform:translateY(-20px); transition: all 800ms ease; transition-delay:100ms; }
+    .hero p { max-width:600px; font-size:1.05rem; opacity:0; transform:translateY(-20px); transition: all 900ms ease; transition-delay:200ms; }
+    .profile-image { overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.5); opacity:0; transform:translateY(-20px); transition: all 700ms ease; }
+
+    /* Section Titles */
+    .section-title { font-size:1.75rem; font-weight:500; color:var(--color-primary); margin-bottom:2rem; opacity:0; transform:translateY(10px); transition: all 600ms ease; }
+
+    /* Experience */
+    .experience-item { margin-bottom:2rem; opacity:0; transform:translateY(10px); transition: all 600ms ease; }
+    .experience-item h3 { font-size:1.1rem; font-weight:500; margin-bottom:0.3rem; }
+    .experience-item span { font-size:0.95rem; color:var(--color-secondary); }
+
+    /* Skills */
+    .skills { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.5rem; }
+    .skill { padding:1rem 1.25rem; border-left:3px solid var(--color-accent); background:#152236; box-shadow:0 2px 8px rgba(0,0,0,0.5); transition: transform 0.3s ease, box-shadow 0.3s ease; opacity:0; transform:translateY(10px); }
+    .skill:hover { transform:translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.7); }
+
+    /* Footer */
+    footer { padding:3rem 0; text-align:center; }
+    footer a { margin:0 0.75rem; font-weight:500; transition: color 0.3s ease; }
+    footer a:hover { color: var(--color-link-hover); }
+
+    /* Reveal animations */
+    .reveal { opacity:0; transform:translateY(10px); transition: all 700ms ease; }
+    .visible { opacity:1; transform:translateY(0); }
+
+    @media (max-width:900px) { .hero { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <section class="container hero reveal">
+    <div>
+      <h1>MARVEL MISCELLANY</h1>
+      <h2>Senior Software Engineer / Systems Architect</h2>
+      <p>Enterprise-focused software professional specializing in reliable, scalable systems and long-term technical strategy.</p>
+    </div>
+    <div class="profile-image">
+      <img src="marvel.jpg" alt="Professional profile photograph">
+    </div>
+  </section>
+
+  <!-- Executive Summary -->
+  <section class="container reveal">
+    <h2 class="section-title">Executive Summary</h2>
+    <p>I work at the intersection of software engineering and business execution, translating complex requirements into dependable systems. My approach emphasizes risk reduction, architectural clarity, and long-term operational stability.</p>
+  </section>
+
+  <!-- Experience -->
+  <section class="container reveal">
+    <h2 class="section-title">Selected Experience</h2>
+    <div class="experience-item">
+      <h3>Lead Engineer — Enterprise Platform</h3>
+      <span>2022 – Present</span>
+      <p>Led the design and delivery of a mission-critical platform serving internal and external stakeholders, improving reliability and deployment velocity.</p>
+    </div>
+    <div class="experience-item">
+      <h3>Software Engineer — Infrastructure & Systems</h3>
+      <span>2019 – 2022</span>
+      <p>Designed and maintained backend services and tooling with an emphasis on system resilience and cost-aware scaling.</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="container reveal">
+    <h2 class="section-title">Core Competencies</h2>
+    <div class="skills">
+      <div class="skill">System Architecture & Design</div>
+      <div class="skill">Backend Engineering</div>
+      <div class="skill">Linux & Infrastructure</div>
+      <div class="skill">Performance Optimization</div>
+      <div class="skill">Security-Conscious Development</div>
+      <div class="skill">Technical Leadership</div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <footer class="container reveal">
+    <p>
+      <a href="mailto:you@example.com">Email</a>
+      <a href="https://github.com/username">GitHub</a>
+      <a href="https://linkedin.com/in/username">LinkedIn</a>
+    </p>
+  </footer>
+
+  <script>
+    // Reveal elements on scroll
+    const reveals = document.querySelectorAll('.reveal, .experience-item, .section-title, .skill, .hero h1, .hero h2, .hero p, .profile-image');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
