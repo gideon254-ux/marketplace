@@ -3,214 +3,239 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MARVEL MISCELLANY | Senior Software Engineer & Systems Architect</title>
+<title>MARVEL MISCELLANY | Executive Portfolio</title>
 
 <style>
 :root {
-  --paper-base: #f4ecd8;
-  --paper-soft: #efe4c8;
+  --paper-main: #f4ecd8;
+  --paper-inner: #efe4c8;
   --paper-card: #f8f1de;
-  --ink-main: #2b2418;
-  --ink-faded: rgba(43,36,24,0.85);
-  --ink-strong: #1f1a12;
-  --accent-burn: rgba(0,0,0,0.35);
-  --accent-warm: #8b6a2b;
-  --max-width: 1100px;
+
+  --ink-dark: #2b2418;
+  --ink-accent: #6b4f1d;
+  --ink-gold: #8b6a2b;
+
+  --max-width: 900px;
 }
 
+/* RESET */
 * { box-sizing: border-box; margin:0; padding:0; }
-html { scroll-behavior: smooth; }
-
 body {
   font-family: Georgia, "Times New Roman", serif;
-  background: var(--paper-base);
-  color: var(--ink-main);
-  line-height: 1.75;
+  background: #1c140a;
+  color: var(--ink-dark);
+  line-height:1.7;
 }
 
-.scroll-wrapper {
-  position: relative;
+/* SCROLL CONTAINER */
+.scroll {
   max-width: var(--max-width);
-  margin: 6rem auto;
+  margin: 4rem auto;
   padding: 4rem 3rem;
-  background: var(--paper-base);
-  filter: url(#paperTexture);
-  -webkit-mask-image: url('data:image/svg+xml;utf8,\
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">\
-<path d="M0,2 Q5,0 10,2 T20,2 T30,3 T40,1 T50,3 T60,2 T70,3 T80,1 T90,3 T100,2 \
-L100,98 Q95,100 90,98 T80,98 T70,97 T60,99 T50,97 T40,98 T30,97 T20,99 T10,97 T0,98 Z" fill="white"/>\
-</svg>');
+  background: var(--paper-main);
+  position: relative;
+  box-shadow:
+    inset 0 0 80px rgba(0,0,0,0.35),
+    0 40px 80px rgba(0,0,0,0.6);
+  border-radius: 6px;
 }
 
-.scroll-wrapper::before {
-  content:"";
-  position:absolute;
-  inset:0;
+/* TORN EDGES */
+.scroll::before,
+.scroll::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 28px;
   background:
-    radial-gradient(circle at top left, var(--accent-burn), transparent 55%),
-    radial-gradient(circle at top right, var(--accent-burn), transparent 55%),
-    radial-gradient(circle at bottom left, var(--accent-burn), transparent 55%),
-    radial-gradient(circle at bottom right, var(--accent-burn), transparent 55%);
-  pointer-events:none;
+    repeating-linear-gradient(
+      -45deg,
+      var(--paper-main) 0px,
+      var(--paper-main) 8px,
+      transparent 8px,
+      transparent 14px
+    );
+}
+.scroll::before { top: -14px; }
+.scroll::after { bottom: -14px; transform: rotate(180deg); }
+
+/* TYPOGRAPHY */
+h1, h2, h3 { 
+  text-align: center; 
+  color: var(--ink-accent); 
+  text-shadow: 0.6px 0.6px 0 rgba(0,0,0,0.25); 
+}
+h1 { font-size: 2.8rem; margin-bottom: 2rem; }
+h2 { font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1.5rem; }
+h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+p { font-size: 1.05rem; margin: 1rem 0; text-shadow: 0.3px 0.3px 0 rgba(0,0,0,0.15), -0.3px -0.3px 0 rgba(0,0,0,0.05); }
+
+/* DROP CAPS */
+p::first-letter {
+  float: left;
+  font-size: 3.8rem;
+  line-height: 0.9;
+  margin-right: 0.4rem;
+  color: var(--ink-gold);
+  text-shadow:
+    1px 1px 0 rgba(0,0,0,0.35),
+    -1px -1px 0 rgba(0,0,0,0.2);
 }
 
-.scroll-wrapper::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to right, transparent 49%, rgba(0,0,0,0.08) 50%, transparent 51%),
-    linear-gradient(to bottom, transparent 46%, rgba(0,0,0,0.06) 47%, transparent 48%);
-  pointer-events:none;
-}
-
-p, li, h1, h2, h3 {
-  text-shadow: 0.4px 0.4px 0 rgba(0,0,0,0.15),
-               -0.3px -0.3px 0 rgba(0,0,0,0.08);
-}
-
-.drop-cap::first-letter {
-  float:left;
-  font-size:4.2rem;
-  line-height:0.85;
-  padding-right:0.5rem;
-  font-family:"Palatino Linotype", serif;
-  color:var(--ink-strong);
-}
-
-h1 { font-size:3rem; margin-bottom:0.5rem; }
-h2 {
-  font-size:2.1rem;
-  margin:2.5rem 0 1rem;
-  border-bottom:2px solid var(--accent-warm);
-  display:inline-block;
-}
-h3 { font-size:1.4rem; margin-top:1.5rem; }
-
-.profile-image {
-  margin:2rem 0;
-  text-align:center;
-}
-.profile-image img {
-  max-width:220px;
-  border:3px solid var(--accent-warm);
-  box-shadow:0 10px 30px rgba(0,0,0,0.35);
-}
-
-.card {
+/* SECTION CARDS */
+.section {
   background: var(--paper-card);
-  padding:1.5rem;
-  margin:1.5rem 0;
-  border-left:4px solid var(--accent-warm);
+  padding: 2rem;
+  margin: 2.5rem 0;
+  border-left: 5px solid var(--ink-gold);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06), 0 15px 30px rgba(0,0,0,0.35);
 }
 
-footer {
-  margin-top:4rem;
-  text-align:center;
-  font-size:0.9rem;
-  color:var(--ink-faded);
+/* HERO IMAGE */
+.profile-image { 
+  max-width: 200px; 
+  margin: 1rem auto; 
+  display:block;
+  border-radius: 4px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.5);
 }
 
-footer a {
-  color:var(--ink-main);
-  font-weight:600;
-  margin:0 0.75rem;
-  text-decoration:none;
+/* SKILLS GRID */
+.skills { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1rem; }
+.skill {
+  background: var(--paper-inner);
+  padding: 1rem;
+  border-left: 4px solid var(--ink-accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
-footer a:hover { text-decoration:underline; }
 
-svg { position:absolute; width:0; height:0; }
+/* EXPERIENCE ITEM */
+.experience-item { margin-bottom:2rem; }
+
+/* FOOTER */
+.footer { text-align:center; font-size:0.85rem; margin-top:3rem; opacity:0.8; }
+.footer a { color: var(--ink-accent); text-decoration:none; margin:0 0.5rem; }
+.footer a:hover { text-decoration:underline; }
+
 </style>
 </head>
 
 <body>
 
-<svg>
-  <filter id="paperTexture">
-    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/>
-    <feComposite operator="arithmetic" k1="1" k2="0.02"/>
-  </filter>
-</svg>
+<div class="scroll">
 
-<div class="scroll-wrapper">
-
-<section>
+  <!-- HERO -->
   <h1>MARVEL MISCELLANY</h1>
-  <h3>Senior Software Engineer / Systems Architect</h3>
+  <h2>Senior Software Engineer / Systems Architect</h2>
+  <img src="marvel.jpg" alt="Professional profile photograph" class="profile-image">
 
-  <div class="profile-image">
-    <img src="marvel.jpg" alt="Professional profile photograph">
-  </div>
-
-  <p class="drop-cap">
-    I design scalable, reliable, and maintainable software systems that drive enterprise operations,
-    operating at the intersection of technical depth and long-term strategic impact.
-  </p>
-</section>
-
-<section>
-  <h2>Professional Biography</h2>
-
-  <p class="drop-cap">
-    A systems-driven technologist building scalable digital infrastructure from Kenya.
-    In an era defined by accelerating digital transformation, the most consequential builders
-    are not those who merely write code, but those who design systems that endure.
-  </p>
-
-  <h3>Origins and Context</h3>
-  <p>
-    Emerging from Kenya’s rapidly evolving “Silicon Savannah,” my professional identity
-    was shaped under real constraints—demanding efficiency, resilience, and architectural clarity.
-  </p>
-
-  <h3>Systems Thinking as a Core Value</h3>
-  <p>
-    Every design decision is evaluated for downstream effects: maintenance burden, security,
-    cost structure, and extensibility. Technology is treated as infrastructure for leverage.
-  </p>
-
-  <h3>Omix Systems</h3>
-  <p>
-    Omix Systems is conceived as a modular technology platform—capable of delivering
-    enterprise software, automation, and localized infrastructure across emerging markets.
-  </p>
-</section>
-
-<section>
-  <h2>Selected Experience</h2>
-
-  <div class="card">
-    <h3>Lead Engineer — Enterprise Platform</h3>
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="section">
+    <h2>Executive Summary</h2>
     <p>
-      Architected and deployed high-availability systems serving enterprise clients,
-      improving reliability, observability, and delivery velocity.
+      Over the past decade, I have contributed to mission-critical projects across industries,
+      consistently delivering platforms that are reliable under pressure. My philosophy
+      emphasizes clear architectural vision, rigorous operational standards, and proactive
+      risk management.
+    </p>
+    <p>
+      Beyond code, I work closely with cross-functional teams, translating complex technical
+      concepts into actionable strategies. My approach balances short-term deliverables with
+      long-term scalability, providing stakeholders with confidence in execution and vision.
+    </p>
+    <p>
+      A Systems-Driven Technologist Building Scalable Digital Infrastructure from Kenya. 
+      Emerging from Kenya’s tech landscape, @marvel represents a new generation of software developers 
+      guided by systems thinking, pragmatic execution, and a vision of building enduring digital enterprises.
     </p>
   </div>
 
-  <div class="card">
-    <h3>Software Engineer — Infrastructure & Systems</h3>
+  <!-- ORIGINS & CONTEXT -->
+  <div class="section">
+    <h2>Origins and Context</h2>
     <p>
-      Built resilient backend services and automation pipelines, reducing downtime
-      and operational overhead.
+      Kenya has become Africa’s “Silicon Savannah.” Within this environment, opportunity and constraint coexist. 
+      @marvel’s professional identity developed through Linux, cloud tooling, and modern dev workflows, often under resource constraints.
     </p>
   </div>
-</section>
 
-<section>
-  <h2>Core Competencies</h2>
-  <ul>
-    <li>System Architecture & Design</li>
-    <li>Backend Engineering</li>
-    <li>Linux & Infrastructure</li>
-    <li>Security-Conscious Development</li>
-    <li>AI & Automation Systems</li>
-  </ul>
-</section>
+  <!-- PROFESSIONAL FOCUS -->
+  <div class="section">
+    <h2>Professional Focus: Software Development as Infrastructure</h2>
+    <p>
+      Emphasis on building systems that are modular, extensible, portable, and integrate cleanly with third-party tools.
+    </p>
+  </div>
 
-<footer>
-  <a href="mailto:kipkiruigideon890@gmail.com">Email</a>
-  <a href="https://github.com/gideon254-ux" target="_blank">GitHub</a>
-</footer>
+  <!-- OMIX SYSTEMS -->
+  <div class="section">
+    <h2>Omix Systems: From Concept to Platform Vision</h2>
+    <p>
+      Omix Systems is a technology holding and execution platform—capable of delivering websites, internal tools, automation pipelines,
+      and cloud-adjacent infrastructure tailored to African and emerging-market contexts.
+    </p>
+  </div>
+
+  <!-- SECURITY & STRATEGY -->
+  <div class="section">
+    <h2>Security, Identity, and Trust</h2>
+    <p>
+      Careful approach to authentication and trust. Federated architecture balances security, scalability, and velocity.
+    </p>
+  </div>
+
+  <!-- LONG-TERM VISION -->
+  <div class="section">
+    <h2>Long-Term Vision</h2>
+    <p>
+      Build Omix Systems into a durable, multi-layered technology organization with compounding leverage. Portfolio of interoperable products, automation-first operations, and institutional memory.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <h2>Selected Experience</h2>
+    <div class="experience-item">
+      <h3>Lead Engineer — Enterprise Platform</h3>
+      <span>2022 – Present</span>
+      <p>
+        Spearheaded architecture and deployment of a high-availability platform serving multiple enterprise clients.
+      </p>
+    </div>
+    <div class="experience-item">
+      <h3>Software Engineer — Infrastructure & Systems</h3>
+      <span>2019 – 2022</span>
+      <p>
+        Designed backend services emphasizing resilience and scalability. Implemented monitoring and automation tools reducing downtime and operational overhead.
+      </p>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <h2>Core Competencies</h2>
+    <div class="skills">
+      <div class="skill">System Architecture & Design</div>
+      <div class="skill">Backend Engineering</div>
+      <div class="skill">Linux & Infrastructure</div>
+      <div class="skill">Performance Optimization</div>
+      <div class="skill">Security-Conscious Development</div>
+      <div class="skill">Technical Leadership</div>
+      <div class="skill">Cross-Functional Collaboration</div>
+      <div class="skill">Risk Management & Compliance</div>
+      <div class="skill">Software Development</div>
+      <div class="skill">AI Development</div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="footer">
+    <p>
+      <a href="mailto:kipkiruigideon890@gmail.com">Email</a>
+      <a href="https://github.com/gideon254-ux">GitHub</a>
+    </p>
+  </div>
 
 </div>
 </body>
